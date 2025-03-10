@@ -1,101 +1,133 @@
+"use client";
+import React, { useState } from "react";
 import Image from "next/image";
+import Header from "./components/header";
+import Footer from "./components/footer";
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const [expanded, setExpanded] = useState(false);
+  const [expanded2, setExpanded2] = useState(false);
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+  return (
+    <div className="min-h-screen bg-gray-100 flex flex-col justify-between">
+      <Header />
+      <main className="p-6 flex-grow bg-[#1e3932] text-white">
+        <section className="flex flex-col md:flex-row items-center text-left p-10 mx-auto gap-8">
+          {/* Bagian Teks */}
+          <div className="flex-1">
+            <h2 className="text-3xl font-bold">
+              Pernyataan Starbucks Corporation
+            </h2>
+            <h3 className="text-2xl font-bold mt-2">
+              Fakta Tentang Starbucks di Timur Tengah
+            </h3>
+            <p className="mt-6 text-lg">
+              Melihat situasi global yang sedang terjadi saat ini, Starbucks
+              Indonesia turut berduka cita dan menyatakan simpati yang terdalam
+              bagi mereka yang menjadi korban, terluka, terlantar, dan terkena
+              dampak akibat aksi yang keji.
+            </p>
+            {expanded ? (
+              <p className="mt-4 text-lg">
+                Kami dengan tegas menyatakan tidak mendukung tindakan yang
+                mengandung kebencian dan kekerasan, sepenuhnya mendukung usaha
+                perdamaian di dunia, serta berkomitmen untuk terus memberikan
+                Starbucks Experience terbaik kepada semua konsumen.
+              </p>
+            ) : (
+              <p className="mt-4 text-lg truncate">
+                Kami dengan tegas menyatakan tidak mendukung tindakan yang
+                mengandung kebencian...
+              </p>
+            )}
+            <button
+              onClick={() => setExpanded(!expanded)}
+              className="mt-6 px-6 py-2 bg-white text-green-900 font-semibold rounded-md"
+            >
+              {expanded ? "Tampilkan Lebih Sedikit" : "Baca Lebih Lanjut"}
+            </button>
+          </div>
+
+          {/* Bagian Gambar */}
+          <div className="relative w-[300px] h-[450px] md:w-[280px] md:h-[350px]">
             <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+              src="/whimpsb.jpeg"
+              alt="Starbucks Cup"
+              fill
+              className="rounded-md shadow-lg"
             />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
+          </div>
+        </section>
+
+        <section className="flex flex-col md:flex-row items-center text-white p-6 mx-auto max-w-6xl gap-8">
+          <div className="relative flex-1 flex justify-center">
+            <Image
+              src="/sbfoundation.jpg"
+              alt="Starbucks Foundation"
+              width={500}
+              height={300}
+              className="w-[500px] h-[300px] object-cover rounded-lg shadow-lg"
+            />
+          </div>
+          <div className="flex-1 text-left max-w-xl mt-6">
+            <h3 className="text-2xl font-bold mb-2">
+              Starbucks Indonesia dan The Starbucks Foundation mengumumkan
+              donasi bersama untuk memberikan bantuan kemanusiaan di Gaza
+            </h3>
+            {expanded2 ? (
+              <p className="text-lg">
+                Meskipun akar kami berada di Amerika Serikat, kami adalah
+                perusahaan global dengan gerai yang tersebar di 86 pasar,
+                termasuk lebih dari 1.900 gerai di 11 wilayah Timur Tengah dan
+                Afrika Utara yang mempekerjakan lebih dari 19 ribu partner
+                (sebutan untuk karyawan) yang mengenakan green apron...
+              </p>
+            ) : (
+              <p className="text-lg truncate max-w-xl">
+                Meskipun akar kami berada di Amerika Serikat, kami adalah
+                perusahaan global dengan gerai yang tersebar di 86 pasar...
+              </p>
+            )}
+            <button
+              onClick={() => setExpanded2(!expanded2)}
+              className="mt-6 px-6 py-2 bg-white text-green-900 font-semibold rounded-md"
+            >
+              {expanded2 ? "Tampilkan Lebih Sedikit" : "Baca Lebih Lanjut"}
+            </button>
+          </div>
+        </section>
       </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      <main className="p-6 flex-grow text-black">
+        <section className="flex flex-col md:flex-row items-center text-left py-20 max-w-4xl mx-auto gap-8">
+          {/* Bagian Teks */}
+          <div className="flex-1">
+            <h1 className="text-2xl font-bold mt-2">Our Coffee</h1>
+            <p className="mt-6 text-lg">
+              Since 1971, it always has been and will always be about quality.
+              We’re passionate about ethically sourcing only the finest Arabica
+              coffee beans and roasting them with great care. Our passion for
+              coffee is rivaled only by our love of sharing it.
+            </p>
+            <button className="mt-6 px-6 py-2 text-white bg-green-900 font-semibold rounded-md">
+              {" "}
+              Learn more
+            </button>
+          </div>
+
+          {/* Bagian Gambar */}
+          <div className="flex-1 flex justify-center">
+            <Image
+              src="/firststore.webp"
+              alt="Starbucks Cup"
+              width={500}
+              height={500}
+              className="w-[500px] h-[300px] object-cover rounded-lg shadow-lg"
+            />
+          </div>
+        </section>
+      </main>
+
+      <Footer />
     </div>
   );
 }
