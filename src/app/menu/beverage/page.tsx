@@ -20,7 +20,7 @@ const Beverages = () => {
   
     const handleGetProducts = async () => {
       try {
-        const response = await axios.get("http://localhost:3001/api/products");
+        const response = await axios.get("https://company-website-clone.vercel.app/api/products");
         setProducts(response.data.data);
         // console.log(response.data.data)
       } catch (error) {

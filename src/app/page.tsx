@@ -14,7 +14,7 @@ export default function Home() {
       <main className="p-6 flex-grow bg-[#1e3932] text-white">
         <section className="flex flex-col md:flex-row items-center text-left p-10 mx-auto gap-8">
           {/* Bagian Teks */}
-          <div className="flex-1">
+          <div className="flex-1 h-auto">
             <h2 className="text-3xl font-bold">
               Pernyataan Starbucks Corporation
             </h2>
@@ -53,8 +53,9 @@ export default function Home() {
             <Image
               src="/whimpsb.jpeg"
               alt="Starbucks Cup"
-              fill
-              className="rounded-md shadow-lg"
+              width={300}
+              height={450}
+              className="rounded-md shadow-lg object-cover"
             />
           </div>
         </section>
