@@ -9,9 +9,9 @@ export default function Home() {
   const [expanded2, setExpanded2] = useState(false);
 
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col justify-between">
+    <div className="min-h-screen max-w-full bg-gray-100 flex flex-col justify-between">
       <Header />
-      <main className="p-6 flex-grow bg-[#1e3932] text-white">
+      <main className="p-6 flex-grow bg-[#1e3932] text-white max-w-screen">
         <section className="flex flex-col md:flex-row items-center text-left p-10 mx-auto gap-8">
           {/* Bagian Teks */}
           <div className="flex-1 h-auto">
